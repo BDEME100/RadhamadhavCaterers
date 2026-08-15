@@ -1,0 +1,16 @@
+# Node
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Build / scratch artifacts
+*.log
+*.tmp
+build/*.png

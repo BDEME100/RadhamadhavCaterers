@@ -1,0 +1,13 @@
+{
+  "name": "radha-madhav-caterers-menu-build",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Build tooling for the Radha Madhav Caterers menu PDF.",
+  "scripts": {
+    "build:pdf": "node build-menu-pdf.cjs",
+    "embed:pdf": "node embed-pdf-in-site.cjs"
+  },
+  "dependencies": {
+    "playwright": "^1.40.0"
+  }
+}
