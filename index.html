@@ -1023,11 +1023,48 @@
     .stat .num{font-size:1.72rem}
     .stat .lbl{font-size:.75rem;margin-top:4px}
   }
+</style><style id="splash-styles">
+  body.splashing{overflow:hidden!important}
+  .site-splash{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;overflow:hidden;background:#18030b;opacity:1;visibility:visible;transition:opacity .65s cubic-bezier(.4,0,.2,1),visibility .65s ease}
+  .site-splash::before{content:"";position:absolute;inset:-20%;background:radial-gradient(circle at 50% 42%,rgba(129,28,60,.42) 0%,rgba(70,12,32,.22) 28%,transparent 55%),conic-gradient(from 210deg at 50% 45%,transparent 0 34%,rgba(212,175,55,.055) 42%,transparent 50% 84%,rgba(212,175,55,.035) 91%,transparent);animation:splashAmbient 7s ease-in-out infinite alternate}
+  .site-splash::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.18;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");mix-blend-mode:soft-light}
+  .site-splash.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+  .splash-content{position:relative;z-index:1;text-align:center;padding:40px;animation:splashReveal .9s cubic-bezier(.2,.75,.2,1) both}
+  .splash-emblem-stage{position:relative;width:156px;height:156px;margin:0 auto 24px;display:grid;place-items:center}
+  .splash-mark{position:relative;z-index:2;width:94px;height:94px;filter:drop-shadow(0 12px 28px rgba(0,0,0,.5)) drop-shadow(0 0 14px rgba(212,175,55,.2));animation:emblemBreathe 2.4s ease-in-out infinite}
+  .splash-mark-svg{display:block;width:100%;height:100%}
+  .splash-ring{position:absolute;inset:10px;border-radius:50%;border:1px solid rgba(212,175,55,.35)}
+  .splash-ring::before,.splash-ring::after{content:"";position:absolute;width:5px;height:5px;border-radius:50%;background:#f5e08f;box-shadow:0 0 12px rgba(245,224,143,.8)}
+  .splash-ring::before{top:-3px;left:50%}.splash-ring::after{bottom:-3px;right:50%}
+  .ring-one{animation:ringTurn 8s linear infinite}
+  .ring-two{inset:22px;border-color:rgba(245,224,143,.18);border-style:dashed;animation:ringTurn 12s linear infinite reverse}
+  .splash-dust{position:absolute;width:3px;height:3px;border-radius:50%;background:#f5e08f;box-shadow:0 0 10px rgba(245,224,143,.9);animation:dustFloat 2.8s ease-in-out infinite}
+  .d1{left:8px;top:48%;animation-delay:-.4s}.d2{right:12px;top:28%;animation-delay:-1.2s}.d3{right:28px;bottom:10px;animation-delay:-2s}.d4{left:30px;top:15px;animation-delay:-2.5s}
+  .splash-name{font-family:var(--display);font-size:clamp(1.8rem,5vw,2.65rem);font-weight:700;line-height:1.08;letter-spacing:.018em;background:linear-gradient(105deg,#b88624 0%,#f6e79f 32%,#d4af37 60%,#f5e08f 82%,#a87818 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold-hi);filter:drop-shadow(0 4px 14px rgba(0,0,0,.62));animation:nameShimmer 3.2s linear infinite}
+  .splash-tag{margin-top:11px;color:rgba(255,249,232,.88);font-size:.68rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase}
+  .splash-rule{position:relative;width:154px;height:1px;margin:25px auto 0;background:rgba(212,175,55,.16);overflow:hidden}
+  .splash-rule span{position:absolute;inset:0 auto 0 -45%;width:45%;background:linear-gradient(90deg,transparent,#f5e08f,transparent);animation:ruleSweep 1.35s ease-in-out infinite}
+  @keyframes splashReveal{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
+  @keyframes splashAmbient{to{transform:scale(1.06) rotate(2deg)}}
+  @keyframes ringTurn{to{transform:rotate(360deg)}}
+  @keyframes emblemBreathe{0%,100%{transform:scale(1);filter:drop-shadow(0 12px 28px rgba(0,0,0,.5)) drop-shadow(0 0 10px rgba(212,175,55,.18))}50%{transform:scale(1.035);filter:drop-shadow(0 12px 28px rgba(0,0,0,.5)) drop-shadow(0 0 22px rgba(212,175,55,.36))}}
+  @keyframes dustFloat{0%,100%{opacity:.25;transform:translateY(4px)}50%{opacity:1;transform:translateY(-5px)}}
+  @keyframes nameShimmer{to{background-position:200% center}}
+  @keyframes ruleSweep{0%{left:-45%}65%,100%{left:100%}}
+  @media(max-width:480px){.splash-content{padding:24px}.splash-emblem-stage{width:136px;height:136px;margin-bottom:20px}.splash-mark{width:82px;height:82px}.splash-tag{font-size:.58rem;letter-spacing:.2em}.splash-rule{width:130px;margin-top:21px}}
+  @media(prefers-reduced-motion:reduce){.site-splash,.site-splash::before,.splash-content,.splash-mark,.splash-ring,.splash-dust,.splash-name,.splash-rule span{animation:none!important;transition-duration:.15s}}
 </style></head>
-<body>
+<body class="splashing">
 
 
-<canvas id="webgl-bg" aria-hidden="true"></canvas>
+<div class="site-splash" id="siteSplash" role="status" aria-label="Loading Radha Madhav Caterers">
+  <div class="splash-content">
+    <div class="splash-emblem-stage"><span class="splash-ring ring-one"></span><span class="splash-ring ring-two"></span><i class="splash-dust d1"></i><i class="splash-dust d2"></i><i class="splash-dust d3"></i><i class="splash-dust d4"></i><div class="splash-mark"><svg class="splash-mark-svg" viewBox="0 0 80 80" role="img" aria-hidden="true"><defs><linearGradient id="rmgH2" gradientUnits="userSpaceOnUse" x1="10" y1="8" x2="70" y2="72"><stop offset="0" stop-color="#f5e08f"/><stop offset=".5" stop-color="#d4af37"/><stop offset="1" stop-color="#a97c1f"/></linearGradient></defs><g fill="none" stroke="url(#rmgH2)" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="40" r="38" stroke-width="1.8"/><circle cx="40" cy="40" r="33" stroke-width="0.9"/></g><ellipse cx="40" cy="19.2" rx="2.1" ry="3.4" fill="url(#rmgH2)"/><path d="M40 31.2 C 35.2 23.2 30.4 24 28.8 30.4" fill="none" stroke="url(#rmgH2)" stroke-width="3.6" stroke-linecap="round"/><path d="M40 31.2 C 44.8 23.2 49.6 24 51.2 30.4" fill="none" stroke="url(#rmgH2)" stroke-width="3.6" stroke-linecap="round"/><rect x="22.4" y="37.2" width="35.2" height="4" rx="2" fill="url(#rmgH2)"/><path d="M30.4 40.8 A 9.6 9.6 0 0 0 49.6 40.8" fill="none" stroke="url(#rmgH2)" stroke-width="3.6" stroke-linecap="round"/><path d="M36.4 57.6 L 40 51.2 L 43.6 57.6 Z" fill="url(#rmgH2)"/><rect x="26.4" y="60.4" width="27.2" height="4" rx="2" fill="url(#rmgH2)"/></svg></div></div>
+    <div class="splash-name">Radha Madhav Caterers</div>
+    <div class="splash-tag">Pure Vegetarian Excellence</div>
+    <div class="splash-rule" aria-hidden="true"><span></span></div>
+  </div>
+</div><canvas id="webgl-bg" aria-hidden="true"></canvas>
 
 <!-- ===================== HEADER ===================== -->
 <header id="site-header">
@@ -2153,6 +2190,25 @@ form.addEventListener('submit',function(e){
   syncSilk();
   window.addEventListener('scroll',syncSilk,{passive:true});
   window.addEventListener('resize',syncSilk,{passive:true});
+})();
+</script><script>
+/* Logo splash shown briefly on every fresh page load. */
+(function(){
+  var splash=document.getElementById('siteSplash');
+  if(!splash)return;
+  var started=Date.now(),minimum=1200,done=false;
+  function revealSite(){
+    if(done)return;done=true;
+    var wait=Math.max(0,minimum-(Date.now()-started));
+    setTimeout(function(){
+      splash.classList.add('is-hidden');
+      document.body.classList.remove('splashing');
+      setTimeout(function(){if(splash&&splash.parentNode)splash.parentNode.removeChild(splash);},650);
+    },wait);
+  }
+  if(document.readyState==='complete'){revealSite();}
+  else{window.addEventListener('load',revealSite,{once:true});}
+  setTimeout(revealSite,3000);
 })();
 </script></body>
 </html>
